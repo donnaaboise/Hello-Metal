@@ -15,6 +15,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var mtkView: MTKView!
     @IBOutlet weak var shapePopUpButton: NSPopUpButton!
     @IBOutlet weak var renderAsWireframe: NSButton!
+    @IBOutlet weak var scaleSlider: NSSlider!
     
     // The delegate of the MTKView that does the drawing
     var renderer: Renderer!
@@ -49,6 +50,22 @@ class ViewController: NSViewController {
         // Set the initial shape to be drawn
         guard let shape = Shape(rawValue: shapePopUpButton.indexOfSelectedItem) else { return }
         renderer.model = Model(shape: shape)
+        
+        // Get the scale value
+        let scale = scaleSlider.floatValue
+        
+        // Not implemented yet - translation value
+        let translation: float3 = [0.0, 0.0, 0.0]
+        
+        // Not implemented yet - rotation around X, Y, and Z
+        let rx: float_t = 0.0
+        let ry: float_t = 0.0
+        let rz: float_t = 0.0
+        
+        // Set transformationMatrix
+        renderer.uniforms.transformationMatrix = float4x4.createTransformationMatrix(translation: translation,
+                                                                                     rx: rx, ry: ry, rz: rz,
+                                                                                     scale: scale)
     }
 
     // When the selection in the shapePopUpButton changes, change the shape to be drawn
@@ -57,6 +74,7 @@ class ViewController: NSViewController {
         renderer.model = Model(shape: shape)
     }
     
+    // Toggle between wireframe and solid
     @IBAction func renderStyleChanged(_ sender: NSButton) {
         switch sender.state {
         case .on:
@@ -65,5 +83,11 @@ class ViewController: NSViewController {
             renderer.renderAsWireframe =  false
         }
     }
+    
+    // Change the scale of the model - translation and rotation values are ignored
+    @IBAction func scaleValueChanged(_ sender: NSSlider) {
+        renderer.uniforms.transformationMatrix = float4x4.createTransformationMatrix(translation: [0.0, 0.0, 0.0], rx: 0.0, ry: 0.0, rz: 0.0, scale: sender.floatValue)
+    }
+    
 }
 

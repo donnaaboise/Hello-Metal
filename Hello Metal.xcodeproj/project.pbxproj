@@ -14,6 +14,7 @@
 		C3AD47072292FCFA002E2837 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD47062292FCFA002E2837 /* Renderer.swift */; };
 		C3AD470A22930345002E2837 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = C3AD470922930345002E2837 /* Shaders.metal */; };
 		C3AD470C22930D05002E2837 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD470B22930D05002E2837 /* Model.swift */; };
+		C3AD470F2293ED85002E2837 /* float4x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AD470E2293ED85002E2837 /* float4x4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C3AD4708229302A2002E2837 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		C3AD470922930345002E2837 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		C3AD470B22930D05002E2837 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		C3AD470E2293ED85002E2837 /* float4x4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = float4x4.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				C3AD470B22930D05002E2837 /* Model.swift */,
 				C3AD4708229302A2002E2837 /* Common.h */,
 				C3AD470922930345002E2837 /* Shaders.metal */,
+				C3AD470E2293ED85002E2837 /* float4x4.swift */,
 				C3AD46FA2292E13B002E2837 /* Assets.xcassets */,
 				C3AD46FC2292E13B002E2837 /* Main.storyboard */,
 				C3AD46FF2292E13B002E2837 /* Info.plist */,
@@ -147,6 +150,7 @@
 				C3AD470C22930D05002E2837 /* Model.swift in Sources */,
 				C3AD470A22930345002E2837 /* Shaders.metal in Sources */,
 				C3AD46F92292E137002E2837 /* ViewController.swift in Sources */,
+				C3AD470F2293ED85002E2837 /* float4x4.swift in Sources */,
 				C3AD47072292FCFA002E2837 /* Renderer.swift in Sources */,
 				C3AD46F72292E137002E2837 /* AppDelegate.swift in Sources */,
 			);

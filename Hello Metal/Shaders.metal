@@ -17,12 +17,16 @@ struct VertexOut {
 };
 
 // Pass through vertex shader
-vertex VertexOut vertex_main(const device Vertex *vertexArray [[buffer(0)]], unsigned int vid [[vertex_id]])
+vertex VertexOut vertex_main(const device Vertex *vertexArray [[buffer(0)]],
+                             unsigned int vid [[vertex_id]],
+                             constant Uniforms &uniforms [[buffer(1)]])
 {
     Vertex in = vertexArray[vid];
     
     VertexOut out;
-    out.pos = float4(in.pos, 1);
+    
+    // Multiply the vertex position by the transformationMatrix to locate in world space
+    out.pos = uniforms.transformationMatrix * float4(in.pos, 1);
     out.col = in.col;
     
     return out;

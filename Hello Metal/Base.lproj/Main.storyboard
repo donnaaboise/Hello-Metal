@@ -764,12 +764,43 @@
                                             <action selector="renderStyleChanged:" target="XfG-lQ-9wD" id="H3U-99-tJ0"/>
                                         </connections>
                                     </button>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="28" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R7l-yv-xd9">
+                                        <rect key="frame" x="20" y="212" width="186" height="17"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1CT-03-cES">
+                                                <rect key="frame" x="-2" y="0.0" width="38" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Scale" id="k62-xB-Jvo">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kg4-po-QmW">
+                                                <rect key="frame" x="60" y="-1" width="128" height="19"/>
+                                                <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="Ldm-Tf-hqx"/>
+                                                <connections>
+                                                    <action selector="scaleValueChanged:" target="XfG-lQ-9wD" id="XwP-3i-M2Y"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="n4m-JG-WJf" firstAttribute="leading" secondItem="Wtg-2P-hX1" secondAttribute="leading" constant="20" id="81W-qZ-2BV"/>
                                     <constraint firstAttribute="trailing" secondItem="axa-HQ-AQk" secondAttribute="trailing" constant="20" id="DSA-M5-wpg"/>
+                                    <constraint firstItem="R7l-yv-xd9" firstAttribute="leading" secondItem="Wtg-2P-hX1" secondAttribute="leading" constant="20" id="Pgk-cq-lt4"/>
+                                    <constraint firstItem="R7l-yv-xd9" firstAttribute="top" secondItem="axa-HQ-AQk" secondAttribute="bottom" constant="8" id="QMg-Gp-Wzg"/>
                                     <constraint firstAttribute="trailing" secondItem="n4m-JG-WJf" secondAttribute="trailing" constant="20" id="Rux-qU-uaY"/>
                                     <constraint firstItem="axa-HQ-AQk" firstAttribute="leading" secondItem="Wtg-2P-hX1" secondAttribute="leading" constant="20" id="YEb-PB-RGh"/>
+                                    <constraint firstAttribute="trailing" secondItem="R7l-yv-xd9" secondAttribute="trailing" constant="20" id="f7M-Aj-3k7"/>
                                     <constraint firstItem="n4m-JG-WJf" firstAttribute="top" secondItem="Wtg-2P-hX1" secondAttribute="top" constant="20" id="kSR-OL-uTf"/>
                                     <constraint firstItem="axa-HQ-AQk" firstAttribute="top" secondItem="n4m-JG-WJf" secondAttribute="bottom" constant="8" id="neJ-xo-kNL"/>
                                 </constraints>
@@ -787,6 +818,7 @@
                     <connections>
                         <outlet property="mtkView" destination="7mM-0T-phg" id="n5n-1x-0VM"/>
                         <outlet property="renderAsWireframe" destination="axa-HQ-AQk" id="D7D-ow-uQY"/>
+                        <outlet property="scaleSlider" destination="kg4-po-QmW" id="hUy-jV-vSX"/>
                         <outlet property="shapePopUpButton" destination="hDE-BC-IsU" id="8lq-yN-NLW"/>
                     </connections>
                 </viewController>
