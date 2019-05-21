@@ -14,6 +14,7 @@ class ViewController: NSViewController {
     // Outlets for the views in the Storyboard
     @IBOutlet weak var mtkView: MTKView!
     @IBOutlet weak var shapePopUpButton: NSPopUpButton!
+    @IBOutlet weak var renderAsWireframe: NSButton!
     
     // The delegate of the MTKView that does the drawing
     var renderer: Renderer!
@@ -56,5 +57,13 @@ class ViewController: NSViewController {
         renderer.model = Model(shape: shape)
     }
     
+    @IBAction func renderStyleChanged(_ sender: NSButton) {
+        switch sender.state {
+        case .on:
+            renderer.renderAsWireframe = true
+        default:
+            renderer.renderAsWireframe =  false
+        }
+    }
 }
 

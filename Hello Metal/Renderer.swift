@@ -31,6 +31,9 @@ class Renderer: NSObject {
     // Not used yet, will contain the tranform and view matrices
     var uniforms = Uniforms()
     
+    // Configure whether to render model as a wireframe or solid
+    var renderAsWireframe = false
+    
     init?(mtkView: MTKView) {
         
         // Get the device for convenience
@@ -97,6 +100,10 @@ extension Renderer: MTKViewDelegate {
         
         // Not used yet, tell the GPU about the uniforms
         renderEncoder.setVertexBytes(&uniforms, length: MemoryLayout<Uniforms>.stride, index: 1)
+        renderEncoder.setFragmentBytes(&uniforms, length: MemoryLayout<Uniforms>.stride, index: 1)
+        
+        // Configure wireframe or fill/solid rendering
+        renderEncoder.setTriangleFillMode(renderAsWireframe ? .lines : .fill)
         
         // Draw the vertices as triangles in the order specified by the indices array of the model
         // which is encoded in the indexBuffer

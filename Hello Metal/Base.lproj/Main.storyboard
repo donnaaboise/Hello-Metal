@@ -751,11 +751,27 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="axa-HQ-AQk">
+                                        <rect key="frame" x="18" y="235" width="190" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="14" id="vWm-wr-5cn"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="check" title="Render as wireframe" bezelStyle="regularSquare" imagePosition="right" inset="2" id="hhA-BF-dMo">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="renderStyleChanged:" target="XfG-lQ-9wD" id="H3U-99-tJ0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="n4m-JG-WJf" firstAttribute="leading" secondItem="Wtg-2P-hX1" secondAttribute="leading" constant="20" id="81W-qZ-2BV"/>
+                                    <constraint firstAttribute="trailing" secondItem="axa-HQ-AQk" secondAttribute="trailing" constant="20" id="DSA-M5-wpg"/>
                                     <constraint firstAttribute="trailing" secondItem="n4m-JG-WJf" secondAttribute="trailing" constant="20" id="Rux-qU-uaY"/>
+                                    <constraint firstItem="axa-HQ-AQk" firstAttribute="leading" secondItem="Wtg-2P-hX1" secondAttribute="leading" constant="20" id="YEb-PB-RGh"/>
                                     <constraint firstItem="n4m-JG-WJf" firstAttribute="top" secondItem="Wtg-2P-hX1" secondAttribute="top" constant="20" id="kSR-OL-uTf"/>
+                                    <constraint firstItem="axa-HQ-AQk" firstAttribute="top" secondItem="n4m-JG-WJf" secondAttribute="bottom" constant="8" id="neJ-xo-kNL"/>
                                 </constraints>
                             </customView>
                             <customView fixedFrame="YES" id="7mM-0T-phg" userLabel="MTKView" customClass="MTKView">
@@ -770,6 +786,7 @@
                     </splitView>
                     <connections>
                         <outlet property="mtkView" destination="7mM-0T-phg" id="n5n-1x-0VM"/>
+                        <outlet property="renderAsWireframe" destination="axa-HQ-AQk" id="D7D-ow-uQY"/>
                         <outlet property="shapePopUpButton" destination="hDE-BC-IsU" id="8lq-yN-NLW"/>
                     </connections>
                 </viewController>
