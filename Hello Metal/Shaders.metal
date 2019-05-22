@@ -18,8 +18,9 @@ struct VertexOut {
 
 // The data struct for the uniform variables
 struct Uniforms {
-    matrix_float4x4  transformationMatrix; // Position, rotation, and scale
-    matrix_float4x4  viewMatrix; // Not used
+    matrix_float4x4  modelMatrix; // Position, rotation, and scale
+    matrix_float4x4  viewMatrix; // Camera
+    matrix_float4x4  projectionMatrix; // Add 3d perspective
     bool wireframe; // Should we render as a white wireframe
 };
 
@@ -32,8 +33,8 @@ vertex VertexOut vertex_main(const device Vertex *vertexArray [[buffer(0)]],
     
     VertexOut out;
     
-    // Multiply the vertex position by the transformationMatrix to locate in world space
-    out.pos = uniforms.transformationMatrix * float4(in.pos, 1);
+    // Multiply the vertex position by the model, view, and projection matrices to position in space
+    out.pos = uniforms.projectionMatrix * uniforms.viewMatrix * uniforms.modelMatrix * float4(in.pos, 1);
     
     // If we are drawing as a wireframe, set the colour to white
     if (uniforms.wireframe) {

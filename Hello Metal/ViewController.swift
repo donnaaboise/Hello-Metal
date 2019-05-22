@@ -63,7 +63,7 @@ class ViewController: NSViewController {
         let rz: float_t = 0.0
         
         // Set transformationMatrix
-        renderer.uniforms.transformationMatrix = float4x4.createTransformationMatrix(translation: translation,
+        renderer.uniforms.modelMatrix = float4x4.createTransformationMatrix(translation: translation,
                                                                                      rx: rx, ry: ry, rz: rz,
                                                                                      scale: scale)
     }
@@ -86,7 +86,7 @@ class ViewController: NSViewController {
     
     // Change the scale of the model - translation and rotation values are ignored
     @IBAction func scaleValueChanged(_ sender: NSSlider) {
-        renderer.uniforms.transformationMatrix = float4x4.createTransformationMatrix(translation: [0.0, 0.0, 0.0], rx: 0.0, ry: 0.0, rz: 0.0, scale: sender.floatValue)
+        renderer.uniforms.modelMatrix = float4x4.createTransformationMatrix(translation: [0.0, 0.0, 0.0], rx: 0.0, ry: 0.0, rz: 0.0, scale: sender.floatValue)
     }
     
 }

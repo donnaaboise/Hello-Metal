@@ -12,8 +12,9 @@ import simd
 // Switch to defining Unforms in Swift and MSL rather than bridging
 // Managing types was getting tricky
 struct Uniforms {
-    var transformationMatrix = matrix_identity_float4x4
+    var modelMatrix = matrix_identity_float4x4
     var viewMatrix = matrix_identity_float4x4
+    var projectionMatrix = matrix_identity_float4x4
     var wireframe = false
 };
 
@@ -37,7 +38,7 @@ class Renderer: NSObject {
         }
     }
     
-    // Not used yet, will contain the tranform and view matrices
+    // Contains the model, view, and projection matrices; and a boolean to toggle wireframe rendering
     var uniforms = Uniforms()
     
     init?(mtkView: MTKView) {
@@ -57,9 +58,16 @@ class Renderer: NSObject {
         // Create the RenderPipelineState
         pipelineState = Renderer.createRenderPipeline(mtkView: mtkView)
         
-        // Not used yet, set the transform and view matrices to the identity matrix
-        uniforms.transformationMatrix = matrix_identity_float4x4
-        uniforms.viewMatrix = matrix_identity_float4x4
+        // Initialise the model matrix to the identity matrix
+        uniforms.modelMatrix = matrix_identity_float4x4
+        
+        // Set the camera three units away from the scene
+        uniforms.viewMatrix = float4x4.createTranslationMatrix(translation: [0, 0, -3]).inverse
+        
+        // Initialise the projection matrix to the identity matrix
+        let aspect = Float(mtkView.bounds.width / mtkView.bounds.height)
+        let FOV = (70 / 180) * Float.pi
+        uniforms.projectionMatrix = Renderer.createProjectionMatrix(fov: FOV, near: 0.01, far: 100.0, aspect: aspect)
     }
     
     class func createRenderPipeline(mtkView: MTKView) -> MTLRenderPipelineState {
@@ -78,11 +86,25 @@ class Renderer: NSObject {
         }
         return ps
     }
+    
+    class func createProjectionMatrix(fov: Float, near: Float, far: Float, aspect: Float, lhs: Bool = true) -> matrix_float4x4 {
+        let y = 1 / tan(fov * 0.5)
+        let x = y / aspect
+        let z = lhs ? far / (far - near) : far / (near - far)
+        let X = float4( x,  0,  0,  0)
+        let Y = float4( 0,  y,  0,  0)
+        let Z = lhs ? float4( 0,  0,  z, 1) : float4( 0,  0,  z, -1)
+        let W = lhs ? float4( 0,  0,  z * -near,  0) : float4( 0,  0,  z * near,  0)
+        return matrix_float4x4(X, Y, Z, W)
+    }
 }
 
 extension Renderer: MTKViewDelegate {
+    // Called when the MTKView changes size so we recalculate the projection matrix
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        // Recalculate viewMatrix here, only matters once we're doind 3D
+        let aspect = Float(view.bounds.width / view.bounds.height)
+        let FOV = (70 / 180) * Float.pi
+        uniforms.projectionMatrix = Renderer.createProjectionMatrix(fov: FOV, near: 0.01, far: 100.0, aspect: aspect)
     }
     
     // Called 60 times a second to update the contents of the MTKView

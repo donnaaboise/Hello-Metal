@@ -706,15 +706,15 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Hello_Metal" customModuleProvider="target" sceneMemberID="viewController">
                     <splitView key="view" arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" id="xrK-h9-wQ4">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1027" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <customView id="Wtg-2P-hX1" userLabel="Control View">
-                                <rect key="frame" x="0.0" y="0.0" width="226" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="516" height="600"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n4m-JG-WJf">
-                                        <rect key="frame" x="20" y="259" width="186" height="21"/>
+                                        <rect key="frame" x="20" y="559" width="186" height="21"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gs8-bE-VMG">
                                                 <rect key="frame" x="-2" y="2" width="43" height="17"/>
@@ -752,7 +752,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="axa-HQ-AQk">
-                                        <rect key="frame" x="18" y="235" width="190" height="18"/>
+                                        <rect key="frame" x="18" y="535" width="190" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="14" id="vWm-wr-5cn"/>
                                         </constraints>
@@ -765,7 +765,7 @@
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="28" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R7l-yv-xd9">
-                                        <rect key="frame" x="20" y="212" width="186" height="17"/>
+                                        <rect key="frame" x="20" y="512" width="186" height="17"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1CT-03-cES">
                                                 <rect key="frame" x="-2" y="0.0" width="38" height="17"/>
@@ -806,7 +806,7 @@
                                 </constraints>
                             </customView>
                             <customView fixedFrame="YES" id="7mM-0T-phg" userLabel="MTKView" customClass="MTKView">
-                                <rect key="frame" x="227" y="0.0" width="223" height="300"/>
+                                <rect key="frame" x="517" y="0.0" width="510" height="600"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </customView>
                         </subviews>

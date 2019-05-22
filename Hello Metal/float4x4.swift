@@ -15,8 +15,10 @@ extension float4x4 {
     //  - rotation around the X, Y, and Z axis
     //  - size scaling
     static func createTransformationMatrix(translation: float3, rx: float_t, ry: float_t, rz: float_t, scale: float_t) -> float4x4 {
-        let matrix = createScaleMatrix(scale: scale)
-        return matrix
+        let scaleMatrix = createScaleMatrix(scale: scale)
+        let translationMatrix = createTranslationMatrix(translation: translation)
+        
+        return scaleMatrix * translationMatrix
     }
     
     // Create a scaling matrix, same scale on all axis
@@ -26,6 +28,17 @@ extension float4x4 {
         matrix.columns.0.x = scale
         matrix.columns.1.y = scale
         matrix.columns.2.z = scale
+        
+        return matrix
+    }
+    
+    // Create a translation matrix - used for the camera position (view matrix)
+    static func createTranslationMatrix(translation: float3) -> float4x4 {
+        var matrix = matrix_identity_float4x4
+        
+        matrix.columns.3.x = translation.x
+        matrix.columns.3.y = translation.y
+        matrix.columns.3.z = translation.z
         
         return matrix
     }
