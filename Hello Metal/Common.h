@@ -23,10 +23,4 @@ struct Vertex {
     vector_float3 col;
 };
 
-// Not used yet, the 4 x 4 transformation and view matrices
-struct Uniforms {
-    matrix_float4x4 transformationMatrix;
-    matrix_float4x4 viewMatrix;
-};
-
 #endif /* Common_h */

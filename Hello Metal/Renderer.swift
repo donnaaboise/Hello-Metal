@@ -7,6 +7,15 @@
 //
 
 import MetalKit
+import simd
+
+// Switch to defining Unforms in Swift and MSL rather than bridging
+// Managing types was getting tricky
+struct Uniforms {
+    var transformationMatrix = matrix_identity_float4x4
+    var viewMatrix = matrix_identity_float4x4
+    var wireframe = false
+};
 
 class Renderer: NSObject {
     
@@ -30,9 +39,6 @@ class Renderer: NSObject {
     
     // Not used yet, will contain the tranform and view matrices
     var uniforms = Uniforms()
-    
-    // Configure whether to render model as a wireframe or solid
-    var renderAsWireframe = false
     
     init?(mtkView: MTKView) {
         
@@ -103,7 +109,7 @@ extension Renderer: MTKViewDelegate {
         renderEncoder.setFragmentBytes(&uniforms, length: MemoryLayout<Uniforms>.stride, index: 1)
         
         // Configure wireframe or fill/solid rendering
-        renderEncoder.setTriangleFillMode(renderAsWireframe ? .lines : .fill)
+        renderEncoder.setTriangleFillMode(uniforms.wireframe ? .lines : .fill)
         
         // Draw the vertices as triangles in the order specified by the indices array of the model
         // which is encoded in the indexBuffer

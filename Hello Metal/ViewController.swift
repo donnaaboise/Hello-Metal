@@ -78,9 +78,9 @@ class ViewController: NSViewController {
     @IBAction func renderStyleChanged(_ sender: NSButton) {
         switch sender.state {
         case .on:
-            renderer.renderAsWireframe = true
+            renderer.uniforms.wireframe = true
         default:
-            renderer.renderAsWireframe =  false
+            renderer.uniforms.wireframe =  false
         }
     }
     

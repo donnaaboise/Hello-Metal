@@ -16,6 +16,13 @@ struct VertexOut {
     float3 col; // Colour
 };
 
+// The data struct for the uniform variables
+struct Uniforms {
+    matrix_float4x4  transformationMatrix; // Position, rotation, and scale
+    matrix_float4x4  viewMatrix; // Not used
+    bool wireframe; // Should we render as a white wireframe
+};
+
 // Pass through vertex shader
 vertex VertexOut vertex_main(const device Vertex *vertexArray [[buffer(0)]],
                              unsigned int vid [[vertex_id]],
@@ -27,7 +34,13 @@ vertex VertexOut vertex_main(const device Vertex *vertexArray [[buffer(0)]],
     
     // Multiply the vertex position by the transformationMatrix to locate in world space
     out.pos = uniforms.transformationMatrix * float4(in.pos, 1);
-    out.col = in.col;
+    
+    // If we are drawing as a wireframe, set the colour to white
+    if (uniforms.wireframe) {
+        out.col = float3(1.0, 1.0, 1.0);
+    } else {
+        out.col = in.col;
+    }
     
     return out;
 }
