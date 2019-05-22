@@ -777,7 +777,7 @@
                                             </textField>
                                             <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kg4-po-QmW">
                                                 <rect key="frame" x="60" y="-1" width="128" height="19"/>
-                                                <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="Ldm-Tf-hqx"/>
+                                                <sliderCell key="cell" state="on" alignment="left" maxValue="2" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="Ldm-Tf-hqx"/>
                                                 <connections>
                                                     <action selector="scaleValueChanged:" target="XfG-lQ-9wD" id="XwP-3i-M2Y"/>
                                                 </connections>
