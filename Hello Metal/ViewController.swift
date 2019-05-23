@@ -12,6 +12,7 @@ import MetalKit
 class ViewController: NSViewController {
 
     // Outlets for the views in the Storyboard
+    @IBOutlet var splitView: NSSplitView!
     @IBOutlet weak var mtkView: MTKView!
     @IBOutlet weak var shapePopUpButton: NSPopUpButton!
     @IBOutlet weak var renderAsWireframe: NSButton!
@@ -26,6 +27,10 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Set up the NSSplitView
+        splitView.setPosition(250.0, ofDividerAt: 0)
+        splitView.setHoldingPriority(.defaultHigh, forSubviewAt: 0)
+        
         // Get the default GPU and assign it to the MTKView
         guard let defaultDevice = MTLCreateSystemDefaultDevice() else {
             fatalError("Could not create default Metal device")

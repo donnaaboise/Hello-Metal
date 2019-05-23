@@ -820,11 +820,12 @@
                         <outlet property="renderAsWireframe" destination="axa-HQ-AQk" id="D7D-ow-uQY"/>
                         <outlet property="scaleSlider" destination="kg4-po-QmW" id="hUy-jV-vSX"/>
                         <outlet property="shapePopUpButton" destination="hDE-BC-IsU" id="8lq-yN-NLW"/>
+                        <outlet property="splitView" destination="xrK-h9-wQ4" id="fcA-Vm-7Rf"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="76" y="847"/>
         </scene>
     </scenes>
 </document>

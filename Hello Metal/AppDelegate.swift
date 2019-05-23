@@ -14,7 +14,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        // Set a minimum size for the main window
+        if let window = NSApplication.shared.mainWindow {
+            window.setContentSize(NSSize(width: 800, height: 600))
+            window.minSize = NSSize(width: 800, height: 600)
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
