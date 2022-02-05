@@ -22,7 +22,7 @@ class ViewController: NSViewController {
     var renderer: Renderer!
 
     // Used to construct the shapePopUpButton
-    private let shapes = ["Triangle", "Cube"]
+    private let shapes = ["Triangle", "Cube", "Circle"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

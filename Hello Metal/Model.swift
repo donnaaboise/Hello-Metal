@@ -12,6 +12,7 @@ import MetalKit
 enum Shape: Int {
     case triangle
     case cube
+    case circle
 }
 
 struct Model {
@@ -52,6 +53,25 @@ struct Model {
                             4, 0, 7, 0, 3, 7, // Left
                             4, 1, 0, 4, 5, 1, // Top
                             3, 7, 2, 7, 6, 2] // Bottom
+        case .circle:
+            self.vertices = [Vertex(pos: [0.0, 0.0, 0],                        col: [0.0, 0.0, 0.0]),
+                             Vertex(pos: [1.0, 0.0, 0],                        col: [0.0, 0.0, 1.0]),
+                             Vertex(pos: [1.0/sqrt(2.0), 1/sqrt(2.0), 0],      col: [0.0, 1.0, 0.0]),
+                             Vertex(pos: [0.0, 1.0, 0],                        col: [0.0, 1.0, 1.0]),
+                             Vertex(pos: [-1.0/sqrt(2.0), 1/sqrt(2.0), 0],     col: [1.0, 0.0, 0.0]),
+                             Vertex(pos: [-1.0, 0.0, 0],                       col: [1.0, 0.0, 1.0]),
+                             Vertex(pos: [-1.0/sqrt(2.0), -1/sqrt(2.0), 0],    col: [1.0, 1.0, 0.0]),
+                             Vertex(pos: [0.0, -1.0, 0],                       col: [1.0, 1.0, 1.0]),
+                             Vertex(pos: [1.0/sqrt(2.0), -1/sqrt(2.0), 0],     col: [1.0, 0.0, 0.0])
+                             ]
+            self.indices = [0,1,2, // Top triangle
+                            0,2,3,
+                            0,3,4,
+                            0,4,5,
+                            0,5,6,
+                            0,6,7,
+                            0,7,8,
+                            0,8,1] // Bottom triangle
         }
         self.count = self.indices.count
     }
