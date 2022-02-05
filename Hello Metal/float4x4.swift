@@ -14,7 +14,7 @@ extension float4x4 {
     //  - translation to a location in world space
     //  - rotation around the X, Y, and Z axis
     //  - size scaling
-    static func createTransformationMatrix(translation: float3, rx: float_t, ry: float_t, rz: float_t, scale: float_t) -> float4x4 {
+    static func createTransformationMatrix(translation: SIMD3<Float>, rx: float_t, ry: float_t, rz: float_t, scale: float_t) -> float4x4 {
         let scaleMatrix = createScaleMatrix(scale: scale)
         let translationMatrix = createTranslationMatrix(translation: translation)
         
@@ -33,7 +33,7 @@ extension float4x4 {
     }
     
     // Create a translation matrix - used for the camera position (view matrix)
-    static func createTranslationMatrix(translation: float3) -> float4x4 {
+    static func createTranslationMatrix(translation: SIMD3<Float>) -> float4x4 {
         var matrix = matrix_identity_float4x4
         
         matrix.columns.3.x = translation.x

@@ -91,10 +91,10 @@ class Renderer: NSObject {
         let y = 1 / tan(fov * 0.5)
         let x = y / aspect
         let z = lhs ? far / (far - near) : far / (near - far)
-        let X = float4( x,  0,  0,  0)
-        let Y = float4( 0,  y,  0,  0)
-        let Z = lhs ? float4( 0,  0,  z, 1) : float4( 0,  0,  z, -1)
-        let W = lhs ? float4( 0,  0,  z * -near,  0) : float4( 0,  0,  z * near,  0)
+        let X = SIMD4<Float>( x,  0,  0,  0)
+        let Y = SIMD4<Float>( 0,  y,  0,  0)
+        let Z = lhs ? SIMD4<Float>( 0,  0,  z, 1) : SIMD4<Float>( 0,  0,  z, -1)
+        let W = lhs ? SIMD4<Float>( 0,  0,  z * -near,  0) : SIMD4<Float>( 0,  0,  z * near,  0)
         return matrix_float4x4(X, Y, Z, W)
     }
 }

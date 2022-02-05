@@ -60,7 +60,7 @@ class ViewController: NSViewController {
         let scale = scaleSlider.floatValue
         
         // Not implemented yet - translation value
-        let translation: float3 = [0.0, 0.0, 0.0]
+        let translation: SIMD3<Float> = [0.0, 0.0, 0.0]
         
         // Not implemented yet - rotation around X, Y, and Z
         let rx: float_t = 0.0
